@@ -18,7 +18,7 @@ os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_API_KEY"] = "api"
 os.environ["LANGCHAIN_PROJECT"] = "vision_Agent_v1"
 
-db_path = r"C:\Users\Muhammad Syafiq\Desktop\LangChain\ICs_database.db"
+db_path = r"C:\sqlite_database_path"
 COOL_DOWN_TIME = 10
 
 llm = ChatOllama(
@@ -34,9 +34,9 @@ def normalize_mpn(mpn: str) -> str:
     """Removes all non-alphanumeric characters and converts to uppercase."""
     return re.sub(r'[^A-Z0-9]', '', str(mpn).upper())
 
-# ==========================================
+# =========================
 # MARKDOWN LOADER FUNCTIONS
-# ==========================================
+# =========================
 
 def load_markdown_directory(directory_path: Path, target_mpn: str = None, target_package: str = None) -> str:
     """Reads all .md files in alphabetical order and safely injects variables."""
@@ -76,9 +76,9 @@ def build_system_prompt() -> str:
         f"{tools_content}"
     )
 
-# ==========================================
+# ================
 # TOOL DEFINITIONS
-# ==========================================
+# ================
 
 @tool
 def read_datasheet(pdf_path: str, target_package: str, target_mpn: str) -> str:
@@ -232,9 +232,9 @@ def save_pinout_to_db(part_number: str, pin_assignments: any) -> str:
             conn.close()
         return f"Database Pipeline Error: {str(e)}"
     
-# ==========================================
+# =======================
 # AGENT SETUP & EXECUTION
-# ==========================================
+# =======================
 
 def custome_agent(model, tools, system_prompt: str, debug: bool = False):
     if debug:
@@ -259,7 +259,7 @@ if __name__ == '__main__':
         debug=True
     )
 
-    pdf_folder = Path(r"C:\Users\Muhammad Syafiq\Desktop\LangChain\ICs Logic Gate Datasheet")
+    pdf_folder = Path(r"C:\Datasheet_pdf_folder")
 
     for pdf_file in pdf_folder.glob("*.pdf"):
         pdf_filename = str(pdf_file)
