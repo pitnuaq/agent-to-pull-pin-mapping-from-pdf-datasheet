@@ -1,7 +1,7 @@
 import os
 import json
 import sqlite3
-import fitz  # PyMuPDF
+import fitz
 import base64
 from pathlib import Path
 from langchain_core.tools import tool
@@ -66,7 +66,7 @@ def load_markdown_directory(directory_path: Path, target_mpn: str = None, target
 
 def build_system_prompt() -> str:
     """Stitches together tools.md instructions to build the agent's core brain."""
-    tools_content = load_markdown_directory(Path(r"C:\Users\Muhammad Syafiq\Desktop\LangChain\vision_agent\prompt\tools"))
+    tools_content = load_markdown_directory(Path(r"C:\Path_of_tools_details"))
     
     return (
         "You are an expert engineering AI and expert Test Engineer.\n\n"
@@ -150,7 +150,7 @@ def read_datasheet(pdf_path: str, target_package: str, target_mpn: str) -> str:
     print(f"[Debug] Sending payload size: {len(b64_image)} characters. Waiting for Ollama...")
 
     # Dynamically load the vision logic from the skills folder
-    skills_dir = Path(r"C:\Users\Muhammad Syafiq\Desktop\LangChain\vision_agent\prompt\skills")
+    skills_dir = Path(r"C:\Path_skills_md_file")
     
     vision_prompt = load_markdown_directory(
         skills_dir, 
