@@ -15,7 +15,7 @@ from PIL import Image
 import io
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = "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"
+os.environ["LANGCHAIN_API_KEY"] = "api"
 os.environ["LANGCHAIN_PROJECT"] = "vision_Agent_v1"
 
 db_path = r"C:\Users\Muhammad Syafiq\Desktop\LangChain\ICs_database.db"
@@ -24,7 +24,7 @@ COOL_DOWN_TIME = 10
 llm = ChatOllama(
     model="gemma4:12b",
     temperature=0.0,
-    base_url="http://192.168.0.83:11434",
+    base_url="http://localhost:11434",
     keep_alive="1h",
     reasoning=True,
     num_ctx=32000
